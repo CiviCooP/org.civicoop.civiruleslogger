@@ -25,8 +25,22 @@ class CRM_Civiruleslogger_Page_ViewLog extends CRM_Core_Page {
     CRM_Utils_System::setTitle(ts('View log for rule: "%1"', array(1=>$this->rule->label)));
     $this->assign('rule', $this->rule);
 
+    $total = CRM_Core_DAO::singleValueQuery("SELECT COUNT(*) FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1", array(1 => array($this->ruleId, 'Integer')));
+    $params['total'] = $total;
+    $params['currentPage'] = $this->get(CRM_Utils_Pager::PAGE_ID);
+    $params['rowCount'] = CRM_Utils_Pager::ROWCOUNT;
+    $params['status'] = ts('Log entries %%StatusMessage%%');
+    $this->_pager = new CRM_Utils_Pager($params);
+    $this->assign_by_ref('pager', $this->_pager);
+    list($this->_pagerOffset, $this->_pagerRowCount) = $this->_pager->getOffsetAndRowCount();
+
     $logEntries = array();
-    $dao = CRM_Core_DAO::executeQuery("SELECT * FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1 ORDER BY `timestamp` DESC", array(1 => array($this->ruleId, 'Integer')));
+    $queryParams = array(
+      1 => array($this->ruleId, 'Integer'),
+      2 => array($this->_pagerOffset, 'Integer'),
+      3 => array($this->_pagerRowCount, 'Integer'),
+    );
+    $dao = CRM_Core_DAO::executeQuery("SELECT * FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1 ORDER BY `timestamp` DESC LIMIT %2, %3", $queryParams);
     while($dao->fetch()) {
       $entry = array();
       $entry['id'] = $dao->id;

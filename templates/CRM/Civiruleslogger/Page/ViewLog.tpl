@@ -33,3 +33,5 @@
     </tbody>
 
 </table>
+
+{include file="CRM/common/pager.tpl" location="bottom"}
