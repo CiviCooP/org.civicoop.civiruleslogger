@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/civirule/rule/log</path>
+    <page_callback>CRM_Civiruleslogger_Page_ViewLog</page_callback>
+    <title>ViewLog</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>

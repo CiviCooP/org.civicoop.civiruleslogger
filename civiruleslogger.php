@@ -30,6 +30,32 @@ function civiruleslogger_civicrm_post($op, $objectName, $id, &$params) {
 }
 
 /**
+ * Add link to view logs of a particulair rule
+ *
+ * @param $formName
+ * @param $form
+ */
+function civiruleslogger_civicrm_buildForm($formName, &$form) {
+  if ($form instanceof CRM_Civirules_Form_Rule) {
+    $ruleId = $form->getVar('ruleId');
+    if ($ruleId) {
+      $url = CRM_Utils_System::url('civicrm/civirule/rule/log', array('rule_id' => $ruleId));
+      $logCount = CRM_Core_DAO::singleValueQuery("SELECT COUNT(*) FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1", array(
+        1 => array(
+          $ruleId,
+          'Integer'
+        )
+      ));
+
+      $form->setPostRuleBlock("
+        <div class=\"crm-section\"><div class=\"label\">" . ts('Logging') . "</div>
+        <div class=\"content\"><a href=\"" . $url . "\">" . ts('There are %1 log entries', array(1 => $logCount)) . "</a></div><div class=\"clear\"></div></div>"
+      );
+    }
+  }
+}
+
+/**
  * Implements hook_civicrm_config().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
