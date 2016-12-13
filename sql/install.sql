@@ -1,4 +1,4 @@
-CREATE TABLE `civirule_civiruleslogger_log` (
+CREATE TABLE IF NOT EXISTS `civirule_civiruleslogger_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary key ID',
   `message` varchar(128) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Standardized message',
   `context` longtext COLLATE utf8_unicode_ci COMMENT 'JSON encoded data',
