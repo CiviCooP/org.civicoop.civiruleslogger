@@ -20,7 +20,7 @@
   <compatibility>
     <ver>4.4</ver>
     <ver>4.6</ver>
-    <ver>5.14.1</ver>
+    <ver>5.14</ver>
   </compatibility>
   <requires>
     <ext>org.civicoop.civirules</ext>
