@@ -473,5 +473,11 @@ function _civiruleslogger_civix_civicrm_alterSettingsFolders(&$metaDataFolders =
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_entityTypes
  */
 function _civiruleslogger_civix_civicrm_entityTypes(&$entityTypes) {
-  $entityTypes = array_merge($entityTypes, []);
+  $entityTypes = array_merge($entityTypes, [
+    'CRM_Civiruleslogger_DAO_CivirulesLog' => [
+      'name' => 'CivirulesLog',
+      'class' => 'CRM_Civiruleslogger_DAO_CivirulesLog',
+      'table' => 'civicrm_civirules_log',
+    ],
+  ]);
 }

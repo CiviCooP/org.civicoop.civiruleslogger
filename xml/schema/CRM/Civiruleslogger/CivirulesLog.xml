@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<table>
+  <base>CRM/Civiruleslogger</base>
+  <class>CivirulesLog</class>
+  <name>civirule_civiruleslogger_log</name>
+  <comment>Civirules logger log</comment>
+  <log>true</log>
+  <field>
+    <name>id</name>
+    <type>int unsigned</type>
+    <length>10</length>
+    <required>true</required>
+    <comment>Unique CivirulesLog ID</comment>
+  </field>
+  <primaryKey>
+    <name>id</name>
+    <autoincrement>true</autoincrement>
+  </primaryKey>
+
+  <field>
+    <name>message</name>
+    <type>varchar</type>
+    <length>128</length>
+    <required>true</required>
+    <comment>Standardized message</comment>
+  </field>
+  <field>
+    <name>context</name>
+    <type>longtext</type>
+    <comment>JSON encoded data</comment>
+  </field>
+  <field>
+    <name>level</name>
+    <type>varchar</type>
+    <length>9</length>
+    <comment>error level per PSR3</comment>
+    <default>'info'</default>
+  </field>
+  <field>
+    <name>timestamp</name>
+    <type>timestamp</type>
+    <default>CURRENT_TIMESTAMP</default>
+    <required>true</required>
+    <comment>Timestamp of when event occurred.</comment>
+  </field>
+  <field>
+    <name>contact_id</name>
+    <type>int unsigned</type>
+    <length>10</length>
+    <default>NULL</default>
+    <comment>Optional Contact ID that created the log. Not an FK as we keep this regardless</comment>
+  </field>
+  <field>
+    <name>rule_id</name>
+    <type>int unsigned</type>
+    <length>10</length>
+    <default>NULL</default>
+    <comment>Optional Rule ID that created the log</comment>
+  </field>
+</table>
