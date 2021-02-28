@@ -13,6 +13,6 @@ function civicrm_api3_civirules_logger_prunelog($params) {
   CRM_Core_DAO::executeQuery("DELETE FROM `civirule_civiruleslogger_log` WHERE `timestamp` < (CURDATE() - INTERVAL 3 MONTH)");
 
   $returnValues = [];
-  return civicrm_api3_create_success($returnValues, $params, 'CivirulesLogger', 'PruneLog');
+  return civicrm_api3_create_success($returnValues, $params, 'CivirulesLogger', 'Prunelog');
 }
 

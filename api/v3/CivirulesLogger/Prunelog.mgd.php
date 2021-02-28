@@ -6,7 +6,7 @@
 return [
   0 =>
   [
-    'name' => 'Cron:CivirulesLogger.PruneLog',
+    'name' => 'Cron:CivirulesLogger.Prunelog',
     'entity' => 'Job',
     'params' =>
     [
@@ -15,7 +15,7 @@ return [
       'description' => 'Call CivirulesLogger.PruneLog API',
       'run_frequency' => 'Daily',
       'api_entity' => 'CivirulesLogger',
-      'api_action' => 'PruneLog',
+      'api_action' => 'prunelog',
       'parameters' => '',
     ],
   ],
