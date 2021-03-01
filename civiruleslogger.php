@@ -1,13 +1,6 @@
 <?php
-
 require_once 'civiruleslogger.civix.php';
-
-if (!interface_exists("\\Psr\\Log\\LoggerInterface")) {
-  require_once('psr/log/LoggerInterface.php');
-}
-if (!class_exists("\\Psr\\Log\\LogLevel")) {
-  require_once('psr/log/LogLevel.php');
-}
+use CRM_Civiruleslogger_ExtensionUtil as E;
 
 function civiruleslogger_civirules_logger(\Psr\Log\LoggerInterface &$logger=null) {
   if (empty($logger)) {
@@ -25,7 +18,7 @@ function civiruleslogger_civirules_logger(\Psr\Log\LoggerInterface &$logger=null
  */
 function civiruleslogger_civicrm_post($op, $objectName, $id, &$params) {
   if ($op == 'delete' && $objectName == 'CiviRuleRule') {
-    CRM_Core_DAO::executeQuery("DELETE FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1", array(1=>array($id, 'Integer')));
+    CRM_Core_DAO::executeQuery("DELETE FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1", [1 => [$id, 'Integer']]);
   }
 }
 
@@ -39,17 +32,17 @@ function civiruleslogger_civicrm_buildForm($formName, &$form) {
   if ($form instanceof CRM_Civirules_Form_Rule) {
     $ruleId = $form->getVar('ruleId');
     if ($ruleId) {
-      $url = CRM_Utils_System::url('civicrm/civirule/rule/log', array('rule_id' => $ruleId));
-      $logCount = CRM_Core_DAO::singleValueQuery("SELECT COUNT(*) FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1", array(
-        1 => array(
+      $url = CRM_Utils_System::url('civicrm/civirule/rule/log', ['rule_id' => $ruleId]);
+      $logCount = CRM_Core_DAO::singleValueQuery("SELECT COUNT(*) FROM `civirule_civiruleslogger_log` WHERE `rule_id` = %1", [
+        1 => [
           $ruleId,
           'Integer'
-        )
-      ));
+        ]
+      ]);
 
       $form->setPostRuleBlock("
         <div class=\"crm-section\"><div class=\"label\">" . ts('Logging') . "</div>
-        <div class=\"content\"><a href=\"" . $url . "\">" . ts('There are %1 log entries', array(1 => $logCount)) . "</a></div><div class=\"clear\"></div></div>"
+        <div class=\"content\"><a href=\"" . $url . "\">" . ts('There are %1 log entries', [1 => $logCount]) . "</a></div><div class=\"clear\"></div></div>"
       );
     }
   }
@@ -140,19 +133,6 @@ function civiruleslogger_civicrm_managed(&$entities) {
 }
 
 /**
- * Implements hook_civicrm_caseTypes().
- *
- * Generate a list of case-types
- *
- * Note: This hook only runs in CiviCRM 4.4+.
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
- */
-function civiruleslogger_civicrm_caseTypes(&$caseTypes) {
-  _civiruleslogger_civix_civicrm_caseTypes($caseTypes);
-}
-
-/**
  * Implements hook_civicrm_angularModules().
  *
  * Generate a list of Angular modules.
@@ -163,7 +143,7 @@ function civiruleslogger_civicrm_caseTypes(&$caseTypes) {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
 function civiruleslogger_civicrm_angularModules(&$angularModules) {
-_civiruleslogger_civix_civicrm_angularModules($angularModules);
+  _civiruleslogger_civix_civicrm_angularModules($angularModules);
 }
 
 /**
@@ -174,18 +154,3 @@ _civiruleslogger_civix_civicrm_angularModules($angularModules);
 function civiruleslogger_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
   _civiruleslogger_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
-
-/**
- * Functions below this ship commented out. Uncomment as required.
- *
-
-/**
- * Implements hook_civicrm_preProcess().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
- *
-function civiruleslogger_civicrm_preProcess($formName, &$form) {
-
-}
-
-*/
