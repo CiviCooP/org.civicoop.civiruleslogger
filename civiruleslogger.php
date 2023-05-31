@@ -41,8 +41,8 @@ function civiruleslogger_civicrm_buildForm($formName, &$form) {
       ]);
 
       $form->setPostRuleBlock("
-        <div class=\"crm-section\"><div class=\"label\">" . ts('Logging') . "</div>
-        <div class=\"content\"><a href=\"" . $url . "\">" . ts('There are %1 log entries', [1 => $logCount]) . "</a></div><div class=\"clear\"></div></div>"
+        <div class=\"crm-section\"><div class=\"label\">" . E::ts('Logging') . "</div>
+        <div class=\"content\"><a href=\"" . $url . "\">" . E::ts('There are %1 log entries', [1 => $logCount]) . "</a></div><div class=\"clear\"></div></div>"
       );
     }
   }
@@ -58,17 +58,6 @@ function civiruleslogger_civicrm_config(&$config) {
 }
 
 /**
- * Implements hook_civicrm_xmlMenu().
- *
- * @param $files array(string)
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
- */
-function civiruleslogger_civicrm_xmlMenu(&$files) {
-  _civiruleslogger_civix_civicrm_xmlMenu($files);
-}
-
-/**
  * Implements hook_civicrm_install().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
@@ -78,79 +67,10 @@ function civiruleslogger_civicrm_install() {
 }
 
 /**
- * Implements hook_civicrm_uninstall().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
- */
-function civiruleslogger_civicrm_uninstall() {
-  _civiruleslogger_civix_civicrm_uninstall();
-}
-
-/**
  * Implements hook_civicrm_enable().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
 function civiruleslogger_civicrm_enable() {
   _civiruleslogger_civix_civicrm_enable();
-}
-
-/**
- * Implements hook_civicrm_disable().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
- */
-function civiruleslogger_civicrm_disable() {
-  _civiruleslogger_civix_civicrm_disable();
-}
-
-/**
- * Implements hook_civicrm_upgrade().
- *
- * @param $op string, the type of operation being performed; 'check' or 'enqueue'
- * @param $queue CRM_Queue_Queue, (for 'enqueue') the modifiable list of pending up upgrade tasks
- *
- * @return mixed
- *   Based on op. for 'check', returns array(boolean) (TRUE if upgrades are pending)
- *                for 'enqueue', returns void
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
- */
-function civiruleslogger_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  return _civiruleslogger_civix_civicrm_upgrade($op, $queue);
-}
-
-/**
- * Implements hook_civicrm_managed().
- *
- * Generate a list of entities to create/deactivate/delete when this module
- * is installed, disabled, uninstalled.
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
- */
-function civiruleslogger_civicrm_managed(&$entities) {
-  _civiruleslogger_civix_civicrm_managed($entities);
-}
-
-/**
- * Implements hook_civicrm_angularModules().
- *
- * Generate a list of Angular modules.
- *
- * Note: This hook only runs in CiviCRM 4.5+. It may
- * use features only available in v4.6+.
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
- */
-function civiruleslogger_civicrm_angularModules(&$angularModules) {
-  _civiruleslogger_civix_civicrm_angularModules($angularModules);
-}
-
-/**
- * Implements hook_civicrm_alterSettingsFolders().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
- */
-function civiruleslogger_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
-  _civiruleslogger_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
