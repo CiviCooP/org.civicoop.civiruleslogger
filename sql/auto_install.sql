@@ -11,7 +11,7 @@
 --
 -- /*******************************************************
 -- *
--- * Clean up the existing tables
+-- * Clean up the existing tables - this section generated from drop.tpl
 -- *
 -- *******************************************************/
 
@@ -34,13 +34,13 @@ SET FOREIGN_KEY_CHECKS=1;
 -- *
 -- *******************************************************/
 CREATE TABLE `civirule_civiruleslogger_log` (
-     `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Unique CivirulesLog ID',
-     `message` varchar(128) NOT NULL COMMENT 'Standardised message',
-     `context` longtext COMMENT 'JSON encoded data',
-     `level` varchar(9) DEFAULT 'info' COMMENT 'error level per PSR3',
-     `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Timestamp of when event occurred.',
-     `contact_id` int unsigned DEFAULT NULL COMMENT 'Optional Contact ID that created the log. Not an FK as we keep this regardless',
-     `rule_id` int unsigned DEFAULT NULL COMMENT 'Optional Rule ID that created the log' ,
-     PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
+  `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Unique CivirulesLog ID',
+  `message` varchar(128) NOT NULL COMMENT 'Standardized message',
+  `context` longtext COMMENT 'JSON encoded data',
+  `level` varchar(9) DEFAULT 'info' COMMENT 'error level per PSR3',
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Timestamp of when event occurred.',
+  `contact_id` int unsigned DEFAULT NULL COMMENT 'Optional Contact ID that created the log. Not an FK as we keep this regardless',
+  `rule_id` int unsigned DEFAULT NULL COMMENT 'Optional Rule ID that created the log',
+  PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB;
