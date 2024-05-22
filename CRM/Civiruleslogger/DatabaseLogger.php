@@ -46,7 +46,7 @@ class CRM_Civiruleslogger_DatabaseLogger implements \Psr\Log\LoggerInterface {
    * @param string $message
    * @param array  $context
    */
-  public function alert($message, array $context = []) {
+  public function alert($message, array $context = []): void {
     $this->log(\Psr\Log\LogLevel::ALERT, $message, $context);
   }
 
