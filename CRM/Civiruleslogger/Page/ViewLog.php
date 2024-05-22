@@ -45,7 +45,7 @@ class CRM_Civiruleslogger_Page_ViewLog extends CRM_Core_Page {
       $entry['context'] = print_r(json_decode($dao->context, true), true);
       $entry['level'] = $dao->level;
       $timestamp = new DateTime($dao->timestamp);
-      $entry['timestamp'] = $timestamp->format('Y-m-d H:i');
+      $entry['timestamp'] = $timestamp->format('Y-m-d H:i:s');
       $entry['contact_id'] = $dao->contact_id;
       $entry['display_name'] = CRM_Contact_BAO_Contact::displayName($dao->contact_id);
       $entry['contact_link'] = '';
