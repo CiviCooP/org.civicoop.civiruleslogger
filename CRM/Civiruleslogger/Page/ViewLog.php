@@ -28,7 +28,7 @@ class CRM_Civiruleslogger_Page_ViewLog extends CRM_Core_Page {
     $params['rowCount'] = CRM_Utils_Pager::ROWCOUNT;
     $params['status'] = ts('Log entries %%StatusMessage%%');
     $this->_pager = new CRM_Utils_Pager($params);
-    $this->assign_by_ref('pager', $this->_pager);
+    $this->assign('pager', $this->_pager);
     list($this->_pagerOffset, $this->_pagerRowCount) = $this->_pager->getOffsetAndRowCount();
 
     $logEntries = [];
