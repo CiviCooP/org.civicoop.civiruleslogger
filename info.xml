@@ -14,28 +14,29 @@
     <url desc="Support">http://civicoop.org</url>
     <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
-  <releaseDate>2024-05-22</releaseDate>
-  <version>1.4</version>
+  <releaseDate>2024-12-04</releaseDate>
+  <version>1.5.0</version>
   <develStage>stable</develStage>
   <compatibility>
-    <ver>5.59</ver>
+    <ver>6.4</ver>
   </compatibility>
   <requires>
     <ext>org.civicoop.civirules</ext>
   </requires>
   <civix>
     <namespace>CRM/Civiruleslogger</namespace>
-    <format>23.02.1</format>
+    <format>25.10.2</format>
   </civix>
   <mixins>
     <mixin>menu-xml@1.0.0</mixin>
-    <mixin>mgd-php@1.0.0</mixin>
-    <mixin>smarty-v2@1.0.1</mixin>
-    <mixin>entity-types-php@1.0.0</mixin>
+    <mixin>mgd-php@2.0.0</mixin>
+    <mixin>entity-types-php@2.0.0</mixin>
+    <mixin>scan-classes@1.0.0</mixin>
+    <mixin>smarty@1.0.3</mixin>
   </mixins>
   <classloader>
     <psr0 prefix="CRM_" path="."/>
     <psr4 prefix="Civi\" path="Civi"/>
   </classloader>
-  <upgrader>CRM_Civiruleslogger_Upgrader</upgrader>
+  <upgrader>CiviMix\Schema\Civiruleslogger\AutomaticUpgrader</upgrader>
 </extension>
