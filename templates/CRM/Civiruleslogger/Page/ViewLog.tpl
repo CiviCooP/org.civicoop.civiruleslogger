@@ -1,3 +1,5 @@
+{crmScope extensionKey='org.civicoop.civiruleslogger'}
+
 <p><a href="{crmURL p="civicrm/civirule/form/rule" q="reset=1&action=update&id=`$rule->id`"}">{ts}Go back{/ts}</a></p>
 
 <table>
@@ -35,3 +37,4 @@
 </table>
 
 {include file="CRM/common/pager.tpl" location="bottom"}
+{/crmScope}
