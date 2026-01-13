@@ -89,6 +89,7 @@ class CRM_Civiruleslogger_ExtensionUtil {
 
 use CRM_Civiruleslogger_ExtensionUtil as E;
 
+pathload()->addSearchDir(__DIR__ . '/mixin/lib');
 spl_autoload_register('_civiruleslogger_civix_class_loader', TRUE, TRUE);
 
 function _civiruleslogger_civix_class_loader($class) {

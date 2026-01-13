@@ -23,7 +23,7 @@ return [
     ],
     'message' => [
       'title' => E::ts('Message'),
-      'sql_type' => 'varchar(128)',
+      'sql_type' => 'text',
       'input_type' => 'Text',
       'required' => TRUE,
       'description' => E::ts('Standardized message'),
