@@ -10,8 +10,15 @@ class CRM_Civiruleslogger_DatabaseLogger extends Psr\Log\AbstractLogger implemen
    * @param array $context
    */
   public function log($level, $message, array $context = []): void {
+    // PSR-3 placeholder interpolation: only replace {key} with values that can
+    // be safely cast to a string. Array/object context values (e.g. the nested
+    // rule action that CRM_Civirules_Utils_LoggerFactory::logError() passes in)
+    // must be skipped, otherwise str_replace() throws a TypeError on PHP 8 and
+    // the logger crashes exactly when it is trying to log an error.
     foreach($context as $key => $value) {
-      $message = str_replace('{'.$key.'}', $value, $message);
+      if (is_scalar($value) || $value === NULL || (is_object($value) && method_exists($value, '__toString'))) {
+        $message = str_replace('{'.$key.'}', (string) $value, $message);
+      }
     }
     $rec = new CRM_Civiruleslogger_DAO_CivirulesLog();
     $separateFields = ['contact_id', 'rule_id'];
