@@ -16,7 +16,7 @@ return [
       'run_frequency' => 'Daily',
       'api_entity' => 'CivirulesLogger',
       'api_action' => 'prunelog',
-      'parameters' => '',
+      'parameters' => 'retention_days=90',
     ],
   ],
 ];
