@@ -2,7 +2,7 @@
 require_once 'civiruleslogger.civix.php';
 use CRM_Civiruleslogger_ExtensionUtil as E;
 
-function civiruleslogger_civirules_logger(\Psr\Log\LoggerInterface &$logger=null) {
+function civiruleslogger_civirules_logger(?\Psr\Log\LoggerInterface &$logger = NULL) {
   if (empty($logger)) {
     $logger = new CRM_Civiruleslogger_DatabaseLogger();
   }
